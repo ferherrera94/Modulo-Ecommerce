@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:     
+
+    apinode: 
+
+        restart: always
+        build: ./api
+        command: npm run dev
+
+    consumer: 
+
+        restart: always
+
+        build: ./consumer
+
+        command: npm run dev
+
+    mongo:
+
+        container_name: mongodatabase   
+        image: mongo
+
+    rabbitmq:
+        hostname: 'rabbitmqHost'
+        image: rabbitmq:3.9.13-management
+        container_name: rabbitmq
+        restart: always
